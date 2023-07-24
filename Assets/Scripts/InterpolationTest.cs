@@ -77,7 +77,7 @@ public class InterpolationTest : MonoBehaviour
        // print("pointAB rotation: " + pointAB.rotation.eulerAngles);
 
         var position_error = Vector3.Distance(pointAB.position, end_point.position);
-        print("position error: " + position_error);
+        //print("position error: " + position_error);
         // Check if the position of the cube and sphere are approximately equal.
         if ((Vector3.Distance(pointAB.position, end_point.position) < 0.001f))
         {
