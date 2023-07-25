@@ -64,6 +64,11 @@ public class VRInputModule : BaseInputModule
         if (newPointerPress == null)
             newPointerPress = ExecuteEvents.GetEventHandler<IPointerClickHandler>(m_CurrentObject);
 
+        // Dragging the slider
+        data.pointerDrag = ExecuteEvents.GetEventHandler<IDragHandler>(data.pointerPressRaycast.gameObject);
+        ExecuteEvents.Execute(data.pointerPress, data, ExecuteEvents.pointerDownHandler);
+        ExecuteEvents.Execute(data.pointerDrag, data, ExecuteEvents.beginDragHandler);
+
         // Set data
         data.pressPosition = data.position;
         data.pointerPress = newPointerPress;
@@ -84,12 +89,17 @@ public class VRInputModule : BaseInputModule
             ExecuteEvents.Execute(data.pointerPress, data, ExecuteEvents.pointerClickHandler);
         }
 
+        // Dragging release
+        ExecuteEvents.Execute(data.pointerPress, data, ExecuteEvents.pointerUpHandler);
+        ExecuteEvents.Execute(data.pointerDrag, data, ExecuteEvents.endDragHandler);
+
         // Clear selected gameobject
         eventSystem.SetSelectedGameObject(null);
 
         // Reset data
         data.pressPosition = Vector2.zero;
         data.pointerPress = null;
+        data.pointerDrag = null;
         data.rawPointerPress = null;
     }
 }
