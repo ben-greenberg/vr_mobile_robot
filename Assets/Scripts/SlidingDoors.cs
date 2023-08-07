@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SlidingDoors : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class SlidingDoors : MonoBehaviour
     [SerializeField] private Transform BackDoor2_open;
 
     public float translation_speed = 4.0f;
+    public bool back_door_open = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +33,8 @@ public class SlidingDoors : MonoBehaviour
     {
         var sliding_door_threshold = 5.0;
         var translation_step = translation_speed * Time.deltaTime; // calculate distance to move
-
-        print("Distance: " + Vector3.Distance(robot.position, FrontDoor1_closed.position));
+//        print("Distance: " + Vector3.Distance(robot.position, FrontDoor1_closed.position));
+//        print("Distance: " + Vector3.Distance(BackDoor1.position, BackDoor2.position));
 
         if (Vector3.Distance(robot.position, FrontDoor1_closed.position) < sliding_door_threshold)
         {
@@ -49,11 +51,17 @@ public class SlidingDoors : MonoBehaviour
         {
             BackDoor1.position = Vector3.MoveTowards(BackDoor1.position, BackDoor1_open.position, translation_step);
             BackDoor2.position = Vector3.MoveTowards(BackDoor2.position, BackDoor2_open.position, translation_step);
+            back_door_open = true;
         }
         else
         {
             BackDoor1.position = Vector3.MoveTowards(BackDoor1.position, BackDoor1_closed.position, translation_step);
             BackDoor2.position = Vector3.MoveTowards(BackDoor2.position, BackDoor2_closed.position, translation_step);
+            if(back_door_open && (Vector3.Distance(BackDoor1.position, BackDoor2.position) < 2.01))
+            {
+                string sceneChange = "SliderScene";
+                SceneManager.LoadScene(sceneChange);
+            }
         }
     }
 }
