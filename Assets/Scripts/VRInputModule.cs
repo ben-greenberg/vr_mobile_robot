@@ -37,6 +37,9 @@ public class VRInputModule : BaseInputModule
         // Hover
         HandlePointerExitAndEnter(m_Data, m_CurrentObject);
 
+        // Drag
+        ExecuteEvents.Execute(m_Data.pointerDrag, m_Data, ExecuteEvents.dragHandler);
+
         // Press
         if (m_ClickAction.GetStateDown(m_TargetSource))
             ProcessPress(m_Data);
