@@ -10,17 +10,17 @@ public class SceneCtrl : MonoBehaviour
     public Slider stressSlider;
     public string sceneName;
 
-    public void ChangeScene(string sceneChange)
+    public void ChangeScene()
     {
-        sceneName = sceneChange;
-        SceneManager.LoadScene(sceneChange);
+        sceneName = "HallwayScene1";
+        SceneManager.LoadScene(sceneName);
         double stressLevel = stressSlider.value;
         this.SaveData(stressLevel);
     }
 
     public void SaveData(double stressLevel)
     {
-        print("stress level: " + stressLevel);
+        //print("stress level: " + stressLevel);
         var sb = new StringBuilder("scene, stress_level");
         sb.Append('\n').Append(sceneName).Append(',').Append(stressLevel.ToString());
         print(sb.ToString());
