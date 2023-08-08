@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+
 using UnityEngine;
 
 public class MainManager : MonoBehaviour
@@ -9,6 +11,8 @@ public class MainManager : MonoBehaviour
     public List<string> sceneSequence;
 
     public int sceneIterator = 0;
+
+    public StringBuilder csv = new StringBuilder("scene, stress_level");
 
     private void Awake()
     {
@@ -23,7 +27,7 @@ public class MainManager : MonoBehaviour
 
         sceneSequence = new List<string>
         {
-            "HallwayScene", "HallwayScene", "HallwayScene", "HallwayScene", "HallwayScene1", "HallwayScene1", "HallwayScene1", "HallwayScene1"
+            "HallwayScene", "HallwayScene1"
         };
 
         string joined1 = string.Join(",", sceneSequence.ToArray());

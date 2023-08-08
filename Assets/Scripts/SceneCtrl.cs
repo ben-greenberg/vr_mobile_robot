@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Diagnostics;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,24 +14,26 @@ public class SceneCtrl : MonoBehaviour
 
     public void ChangeScene()
     {
-        //sceneName = "HallwayScene1";
         // Get the next scene name from the MainManager persistant data
         sceneName = MainManager.Instance.sceneSequence[MainManager.Instance.sceneIterator];
         print("sceneName = " + sceneName.ToString());
 
         SceneManager.LoadScene(sceneName);
         double stressLevel = stressSlider.value;
-        this.SaveData(stressLevel);
 
-        // Increment the sceneIterator object
-        MainManager.Instance.sceneIterator++;
-    }
+        //append the current scene and the reported stress value to the public csv stringbuilder
+        MainManager.Instance.csv.Append('\n').Append(sceneName).Append(',').Append(stressLevel.ToString());
 
-    public void SaveData(double stressLevel)
-    {
-        //print("stress level: " + stressLevel);
-        var sb = new StringBuilder("scene, stress_level");
-        sb.Append('\n').Append(sceneName).Append(',').Append(stressLevel.ToString());
-        print(sb.ToString());
+        // Increment the sceneIterator object until all of the scenes have been traversed
+        if ((MainManager.Instance.sceneIterator) < MainManager.Instance.sceneSequence.Count)
+        {
+            MainManager.Instance.sceneIterator++;
+        }
+        //Write data to file after all scenes have been encountered
+        else
+        {
+            string filepath = "Data/" + System.DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv";
+            File.WriteAllText(filepath, MainManager.Instance.csv.ToString());
+        }
     }
 }
