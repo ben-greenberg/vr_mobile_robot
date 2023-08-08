@@ -12,10 +12,17 @@ public class SceneCtrl : MonoBehaviour
 
     public void ChangeScene()
     {
-        sceneName = "HallwayScene1";
+        //sceneName = "HallwayScene1";
+        // Get the next scene name from the MainManager persistant data
+        sceneName = MainManager.Instance.sceneSequence[MainManager.Instance.sceneIterator];
+        print("sceneName = " + sceneName.ToString());
+
         SceneManager.LoadScene(sceneName);
         double stressLevel = stressSlider.value;
         this.SaveData(stressLevel);
+
+        // Increment the sceneIterator object
+        MainManager.Instance.sceneIterator++;
     }
 
     public void SaveData(double stressLevel)
