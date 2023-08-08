@@ -23,7 +23,31 @@ public class MainManager : MonoBehaviour
 
         sceneSequence = new List<string>
         {
-            "HallwayScene", "HallwayScene1", "HallwayScene"
+            "HallwayScene", "HallwayScene", "HallwayScene", "HallwayScene", "HallwayScene1", "HallwayScene1", "HallwayScene1", "HallwayScene1"
         };
+
+        string joined1 = string.Join(",", sceneSequence.ToArray());
+        print(joined1);
+        sceneSequence.Shuffle();
+        string joined2 = string.Join(",", sceneSequence.ToArray());
+        print(joined2);
+    }
+}
+
+static class MyExtensions
+{
+    private static System.Random rng = new System.Random();
+
+    public static void Shuffle<T>(this IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 }
