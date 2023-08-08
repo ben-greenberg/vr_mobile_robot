@@ -12,6 +12,8 @@ public class MainManager : MonoBehaviour
 
     public int sceneIterator = 0;
 
+    public bool startScene = true;
+
     public StringBuilder csv = new StringBuilder("scene, stress_level");
 
     private void Awake()

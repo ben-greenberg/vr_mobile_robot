@@ -30,7 +30,7 @@ public class InterpolationTest : MonoBehaviour
     // Update is called once per frame  
     void Update()
     {
-        print("waypoint_iterator: " + waypoint_iterator);
+        //print("waypoint_iterator: " + waypoint_iterator);
         // Check if the final waypoint has been reached
         if (waypoint_iterator == waypoints.Count)
         {
@@ -81,7 +81,7 @@ public class InterpolationTest : MonoBehaviour
         // Check if the position of the cube and sphere are approximately equal.
         if ((Vector3.Distance(pointAB.position, end_point.position) < 0.001f))
         {
-            print("WAYPOINT REACHED");
+            //print("WAYPOINT REACHED");
             waypoint_iterator++;
         }
 
