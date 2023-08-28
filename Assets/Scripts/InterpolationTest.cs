@@ -8,7 +8,7 @@ public class InterpolationTest : MonoBehaviour
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
     [SerializeField] private Transform pointC;
-    [SerializeField] private Transform pointAB;
+    [SerializeField] private Transform pointRobot;
 
     // Create a list to populate with waypoints
     List<Transform> waypoints = new List<Transform>();
@@ -48,10 +48,10 @@ public class InterpolationTest : MonoBehaviour
         // Loop through the waypoint list up to the second-to-last item. If subsequent element has been set, move from current element to it
         Transform start_point = waypoints[waypoint_iterator];
         Transform end_point = waypoints[waypoint_iterator + 1];
-        print("robot x-pos: " + pointAB.position.x);
+        print("robot x-pos: " + pointRobot.position.x);
         print("start x-pos: " + start_point.position.x);
         print("end x-pos: " + end_point.position.x);
-        pointAB.position = Vector3.Lerp(start_point.position, end_point.position, interpolate_amount);
+        pointRobot.position = Vector3.Lerp(start_point.position, end_point.position, interpolate_amount);
 
         // If the robot has completed the interpolated move, increment the waypoint and reset the interpolation_amount
         if ((1 - interpolate_amount) < 0.03)
@@ -65,21 +65,21 @@ public class InterpolationTest : MonoBehaviour
         var translation_step = translation_speed * Time.deltaTime; // calculate distance to move
         var rotation_step = rotation_speed * Time.deltaTime; // calculate distance to move
 
-        pointAB.position = Vector3.MoveTowards(pointAB.position, end_point.position, translation_step);
+        pointRobot.position = Vector3.MoveTowards(pointRobot.position, end_point.position, translation_step);
 
         // Determine which direction to rotate towards
-        Vector3 targetDirection = end_point.position - pointAB.position;
+        Vector3 targetDirection = end_point.position - pointRobot.position;
 
         // Rotate the forward vector towards the target direction by one step
-        Vector3 newDirection = Vector3.RotateTowards(pointAB.forward, end_point.forward, rotation_step, 0.0f);
+        Vector3 newDirection = Vector3.RotateTowards(pointRobot.forward, end_point.forward, rotation_step, 0.0f);
 
-        pointAB.rotation = Quaternion.LookRotation(newDirection);
-       // print("pointAB rotation: " + pointAB.rotation.eulerAngles);
+        pointRobot.rotation = Quaternion.LookRotation(newDirection);
+        // print("pointRobot rotation: " + pointRobot.rotation.eulerAngles);
 
-        var position_error = Vector3.Distance(pointAB.position, end_point.position);
+        var position_error = Vector3.Distance(pointRobot.position, end_point.position);
         //print("position error: " + position_error);
         // Check if the position of the cube and sphere are approximately equal.
-        if ((Vector3.Distance(pointAB.position, end_point.position) < 0.001f))
+        if ((Vector3.Distance(pointRobot.position, end_point.position) < 0.001f))
         {
             //print("WAYPOINT REACHED");
             waypoint_iterator++;
