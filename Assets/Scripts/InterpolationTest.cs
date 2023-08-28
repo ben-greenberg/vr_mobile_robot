@@ -8,6 +8,10 @@ public class InterpolationTest : MonoBehaviour
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
     [SerializeField] private Transform pointC;
+    [SerializeField] private Transform pointD;
+    [SerializeField] private Transform pointE;
+    [SerializeField] private Transform pointF;
+    [SerializeField] private Transform pointG;
     [SerializeField] private Transform pointRobot;
 
     // Create a list to populate with waypoints
@@ -25,6 +29,10 @@ public class InterpolationTest : MonoBehaviour
         waypoints.Add(pointA);
         waypoints.Add(pointB);
         waypoints.Add(pointC);
+        waypoints.Add(pointD);
+        waypoints.Add(pointE);
+        waypoints.Add(pointF);
+        waypoints.Add(pointG);
     }
 
     // Update is called once per frame  
