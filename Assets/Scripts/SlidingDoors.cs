@@ -59,7 +59,7 @@ public class SlidingDoors : MonoBehaviour
             BackDoor2.position = Vector3.MoveTowards(BackDoor2.position, BackDoor2_closed.position, translation_step);
             if(back_door_open && (Vector3.Distance(BackDoor1.position, BackDoor2.position) < 2.01))
             {
-                string sceneChange = "SliderScene";
+                string sceneChange = "AffectiveSliderScene";
                 SceneManager.LoadScene(sceneChange);
             }
         }

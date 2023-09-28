@@ -14,7 +14,7 @@ public class MainManager : MonoBehaviour
 
     public bool startScene = true;
 
-    public StringBuilder csv = new StringBuilder("scene, stress_level");
+    public StringBuilder csv = new StringBuilder("scene, arousal_level, pleasure_level");
 
     private void Awake()
     {

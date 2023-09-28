@@ -9,7 +9,8 @@ using UnityEngine.UI;
 
 public class SceneCtrl : MonoBehaviour
 {
-    public Slider stressSlider;
+    public Slider arousalSlider;
+    public Slider pleasureSlider;
     public string sceneName;
 
     public void ChangeScene()
@@ -48,9 +49,10 @@ public class SceneCtrl : MonoBehaviour
         // Get the next scene name from the MainManager persistant data
         sceneName = MainManager.Instance.sceneSequence[MainManager.Instance.sceneIterator];
 
-        double stressLevel = stressSlider.value;
+        double arousalLevel = arousalSlider.value;
+        double pleasureLevel = pleasureSlider.value;
 
-        //append the current scene and the reported stress value to the public csv stringbuilder
-        MainManager.Instance.csv.Append('\n').Append(sceneName).Append(',').Append(stressLevel.ToString());
+        //append the current scene and the reported arousal and pleasure values to the public csv stringbuilder
+        MainManager.Instance.csv.Append('\n').Append(sceneName).Append(',').Append(arousalLevel.ToString()).Append(',').Append(pleasureLevel.ToString());
     }
 }
