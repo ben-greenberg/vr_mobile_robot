@@ -8,12 +8,14 @@ public class BezierInterpolation : MonoBehaviour
     [SerializeField] private Transform point;
     [SerializeField] private Transform pointEnd;
     [SerializeField] private Transform pointRobot;
+    [SerializeField] private float translation_speed;
+    [SerializeField] private float rotation_speed;
+    [SerializeField] private float signaling_distance;
+    [SerializeField] private float curvature;
 
     // Create a list to populate with waypoints
     List<Transform> waypoints = new List<Transform>();
 
-    public float translation_speed = 2.0f;
-    public float rotation_speed = 3f;
     float interpolate_amount;
     int waypoint_iterator = 0;
     
@@ -21,8 +23,7 @@ public class BezierInterpolation : MonoBehaviour
     void Start()
     {
         // Bezier points
-        float curvature = 1;
-        float vertex1_x = -9.5f;
+        float vertex1_x = -signaling_distance;
         float vertex2_x = 0.0f;
         float control1_x = vertex1_x - curvature * vertex1_x;
         float control2_x = vertex2_x + curvature * vertex1_x;
@@ -56,7 +57,7 @@ public class BezierInterpolation : MonoBehaviour
             {
                 angle = -(float)Math.Atan((position.z - previous_position.z) / (position.x - previous_position.x));
             }
-            rotation.SetEulerAngles(0.0f, angle * 180 / (float)Math.PI, 0.0f); //TODO: Fix the origin of the robot model
+            rotation.SetEulerAngles(0.0f, angle , 0.0f); //TODO: Fix the origin of the robot model
             print(rotation);
             new_point.transform.SetPositionAndRotation(position, rotation);
             waypoints.Add(new_point.transform);
@@ -73,9 +74,8 @@ public class BezierInterpolation : MonoBehaviour
             Vector3 position = new Vector3(0f, 0f, 0f);
             Quaternion rotation = new Quaternion(0f, 0f, 0f, 0f);
             position.Set(-waypoints[num_bezier_points - i].position.x, waypoints[num_bezier_points - i].position.y, waypoints[num_bezier_points - i].position.z);
-            rotation = waypoints[num_bezier_points - i].rotation;
-            rotation.Set(waypoints[num_bezier_points - i].rotation.x, -waypoints[num_bezier_points - i].position.y, waypoints[num_bezier_points - i].rotation.z, waypoints[num_bezier_points - i].rotation.w);
-            rotation.y = -point.rotation.y;
+            rotation.Set(waypoints[num_bezier_points - i].rotation.x, -waypoints[num_bezier_points - i].rotation.y, waypoints[num_bezier_points - i].rotation.z, waypoints[num_bezier_points - i].rotation.w);
+            print(rotation);
             new_point.transform.SetPositionAndRotation(position, rotation);
             waypoints.Add(new_point.transform);
         }
