@@ -29,7 +29,8 @@ public class MainManager : MonoBehaviour
 
         sceneSequence = new List<string>
         {
-            "HallwayScene", "HallwayScene1"
+            //"HallwayScene", "HallwayScene1"
+            "HallwaySceneBezier1", "HallwaySceneBezier1"
         };
 
         string joined1 = string.Join(",", sceneSequence.ToArray());

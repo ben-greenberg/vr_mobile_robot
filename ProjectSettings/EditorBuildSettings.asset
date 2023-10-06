@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AffectiveSliderScene.unity
     guid: 80d3a8e2d5d6d574b9f4391c20e0f505
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezier1.unity
+    guid: 1c693eaf9ce7b0b408c164e47afaa7f5
   m_configObjects: {}
