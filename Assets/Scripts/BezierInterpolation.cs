@@ -54,9 +54,9 @@ public class BezierInterpolation : MonoBehaviour
                 angle = 0.0f;
             else
             {
-                angle = (float)Math.Atan((position.z - previous_position.z) / (position.x - previous_position.x))*180/(float)Math.PI;
+                angle = -(float)Math.Atan((position.z - previous_position.z) / (position.x - previous_position.x));
             }
-            rotation.eulerAngles.Set(0.0f, angle, 0.0f);
+            rotation.SetEulerAngles(0.0f, angle * 180 / (float)Math.PI, 0.0f); //TODO: Fix the origin of the robot model
             print(rotation);
             new_point.transform.SetPositionAndRotation(position, rotation);
             waypoints.Add(new_point.transform);
@@ -72,9 +72,9 @@ public class BezierInterpolation : MonoBehaviour
 
             Vector3 position = new Vector3(0f, 0f, 0f);
             Quaternion rotation = new Quaternion(0f, 0f, 0f, 0f);
-            //print("reference position: " + waypoints[num_bezier_points - i].position);
             position.Set(-waypoints[num_bezier_points - i].position.x, waypoints[num_bezier_points - i].position.y, waypoints[num_bezier_points - i].position.z);
             rotation = waypoints[num_bezier_points - i].rotation;
+            rotation.Set(waypoints[num_bezier_points - i].rotation.x, -waypoints[num_bezier_points - i].position.y, waypoints[num_bezier_points - i].rotation.z, waypoints[num_bezier_points - i].rotation.w);
             rotation.y = -point.rotation.y;
             new_point.transform.SetPositionAndRotation(position, rotation);
             waypoints.Add(new_point.transform);
