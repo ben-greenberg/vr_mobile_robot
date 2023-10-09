@@ -230,7 +230,7 @@ MonoBehaviour:
   pointEnd: {fileID: 1321639430}
   pointRobot: {fileID: 378478809}
   translation_speed: 2
-  rotation_speed: 0.3
+  rotation_speed: 1
   signaling_distance: 9.5
   curvature: 1
 --- !u!4 &232197179

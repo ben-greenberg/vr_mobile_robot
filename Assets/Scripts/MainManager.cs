@@ -29,10 +29,16 @@ public class MainManager : MonoBehaviour
 
         sceneSequence = new List<string>
         {
-            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2",
-            "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4",
-            "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6",
-            "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8"
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
+            "HallwaySceneBezierCalc1", "HallwaySceneBezierCalc2", "HallwaySceneBezierCalc3", "HallwaySceneBezierCalc4", "HallwaySceneBezierCalc5", "HallwaySceneBezierCalc6", "HallwaySceneBezierCalc7", "HallwaySceneBezierCalc8",
         };
 
         string joined1 = string.Join(",", sceneSequence.ToArray());

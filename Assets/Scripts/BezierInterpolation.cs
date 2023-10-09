@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BezierInterpolation : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class BezierInterpolation : MonoBehaviour
         // Calculate bezier waypoints and add to list
 
         int iter = 0;
-        float bezier_steps = 50;
+        float bezier_steps = 100;
         for (float t=0; t<=1; t = t + 1/bezier_steps)
         {
             GameObject new_point = new GameObject();
@@ -65,26 +66,42 @@ public class BezierInterpolation : MonoBehaviour
             num_bezier_points++;
             iter++;
         }
-        // Add waypoints for the reverse of mirror image of the curve on the path to the exit
-        for (int i = 1; i <= num_bezier_points; i++)
-        {
-            GameObject new_point = new GameObject();
-            new_point.name = i.ToString();
 
-            Vector3 position = new Vector3(0f, 0f, 0f);
+        if (waypoints[waypoints.Count - 1].position.x != 0.0)
+        {
+            // Add waypoint for passing point
+            GameObject new_point = new GameObject();
+            new_point.name = iter.ToString();
+
+            Vector3 position = new Vector3(0f, 0.5f, -1.27f);
+            float angle = 0.0f;
             Quaternion rotation = new Quaternion(0f, 0f, 0f, 0f);
-            position.Set(-waypoints[num_bezier_points - i].position.x, waypoints[num_bezier_points - i].position.y, waypoints[num_bezier_points - i].position.z);
-            rotation.Set(waypoints[num_bezier_points - i].rotation.x, -waypoints[num_bezier_points - i].rotation.y, waypoints[num_bezier_points - i].rotation.z, waypoints[num_bezier_points - i].rotation.w);
-            print(rotation);
+
+            rotation.SetEulerAngles(0.0f, angle, 0.0f); //TODO: Fix the origin of the robot model
             new_point.transform.SetPositionAndRotation(position, rotation);
             waypoints.Add(new_point.transform);
         }
-        // Add the last waypoint to the list
-        waypoints.Add(pointEnd);
-        for(int i = 0; i < waypoints.Count; i++)
-        {
-            //print(waypoints[i].position);
-        }
+
+        // Add waypoints for the reverse of mirror image of the curve on the path to the exit
+        //for (int i = 1; i <= num_bezier_points; i++)
+        //{
+        //    GameObject new_point = new GameObject();
+        //    new_point.name = i.ToString();
+
+        //    Vector3 position = new Vector3(0f, 0f, 0f);
+        //    Quaternion rotation = new Quaternion(0f, 0f, 0f, 0f);
+        //    position.Set(-waypoints[num_bezier_points - i].position.x, waypoints[num_bezier_points - i].position.y, waypoints[num_bezier_points - i].position.z);
+        //    rotation.Set(waypoints[num_bezier_points - i].rotation.x, -waypoints[num_bezier_points - i].rotation.y, waypoints[num_bezier_points - i].rotation.z, waypoints[num_bezier_points - i].rotation.w);
+        //    print(rotation);
+        //    new_point.transform.SetPositionAndRotation(position, rotation);
+        //    waypoints.Add(new_point.transform);
+        //}
+        //// Add the last waypoint to the list
+        //waypoints.Add(pointEnd);
+        //for (int i = 0; i < waypoints.Count; i++)
+        //{
+        //    print(waypoints[i].rotation);
+        //}
     }
 
     // Update is called once per frame  
@@ -94,6 +111,8 @@ public class BezierInterpolation : MonoBehaviour
         // Check if the final waypoint has been reached
         if (waypoint_iterator == waypoints.Count)
         {
+            string sceneChange = "AffectiveSliderScene";
+            SceneManager.LoadScene(sceneChange);
             return;
         }
 

@@ -26,4 +26,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HallwaySceneBezier1.unity
     guid: 1c693eaf9ce7b0b408c164e47afaa7f5
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezierCalc1.unity
+    guid: a0290e5d73b9585468b7e0d9e51bc597
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezierCalc2.unity
+    guid: 924dded3cfea925479318993e18d5ced
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezierCalc3.unity
+    guid: 6531133ecefeafb4980e4138154ed924
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezierCalc4.unity
+    guid: b796cf1b8a3174a498aba8ac1b732f48
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezierCalc5.unity
+    guid: 66da2d3eb31f119438a43ade881e6e46
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezierCalc6.unity
+    guid: 4cedd826a557c5745ae56aa0ee81a922
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezierCalc7.unity
+    guid: db82a4cc123d84b47ae184555a05c45c
+  - enabled: 1
+    path: Assets/Scenes/HallwaySceneBezierCalc8.unity
+    guid: 3d6cd2f8c83b5074cb159ff0c3d9f44a
   m_configObjects: {}
