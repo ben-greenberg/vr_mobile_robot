@@ -59,7 +59,7 @@ public class BezierInterpolation : MonoBehaviour
                 angle = -(float)Math.Atan((position.z - previous_position.z) / (position.x - previous_position.x));
             }
             rotation.SetEulerAngles(0.0f, angle , 0.0f); //TODO: Fix the origin of the robot model
-            print(rotation);
+            //print(rotation);
             new_point.transform.SetPositionAndRotation(position, rotation);
             waypoints.Add(new_point.transform);
             previous_position = position;

@@ -33,6 +33,7 @@ public class SceneCtrl : MonoBehaviour
             sceneName = MainManager.Instance.sceneSequence[MainManager.Instance.sceneIterator];
             SceneManager.LoadScene(sceneName);
 
+            print("scene_iterator: " + MainManager.Instance.sceneIterator);
         }
         //Write data to file after all scenes have been encountered, and go to FinishScene
         else
